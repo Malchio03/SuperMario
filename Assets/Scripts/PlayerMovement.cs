@@ -116,10 +116,19 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        // Verifica che la collisione non sia con un oggetto "PowerUP"
-        if (collision.gameObject.layer != LayerMask.NameToLayer("PowerUP")) {
-            // Controlla se il giocatore sta saltando verso il basso e tocca un ostacolo
-            if (transform.DotTest(collision.transform, Vector2.up)) {
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            if(transform.DotTest(collision.transform, Vector2.down))
+            {
+                velocity.y = jumpForce / 2f;
+                // velocity.y = 10f;
+                jumping = true;
+            }
+        } else if (collision.gameObject.layer != LayerMask.NameToLayer("PowerUP")) {
+
+            if (transform.DotTest(collision.transform, Vector2.up))
+            {               // Controlla se il giocatore sta saltando verso il basso e tocca un ostacolo
                 velocity.y = 0f;
             }
         }
