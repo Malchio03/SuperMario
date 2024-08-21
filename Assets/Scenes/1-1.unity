@@ -705,6 +705,39 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3249715635291859842, guid: e62038c0504cf124bb51628b480df8f0, type: 3}
   m_PrefabInstance: {fileID: 1571982151}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &115155543 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 481021467160599391, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
+  m_PrefabInstance: {fileID: 481021466993011483}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &115155544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115155543}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 430b966dfc05b422fbdcc9e091df2667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 1128232910}
+  deadsprite: {fileID: 21300000, guid: e9345d9e9a21949478e4292b904591cd, type: 3}
+--- !u!114 &115155549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115155543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c610e0935784ea6a2017431a196a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smallRenderer: {fileID: 1128232908}
+  bigRenderer: {fileID: 2142218907}
 --- !u!1001 &115372755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5265,6 +5298,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d819e2f75eeea5242b6de17737bb2268, type: 3}
   - {fileID: 21300000, guid: 35672984aa1fd894da6716da8832d93a, type: 3}
   framerate: 0.17
+--- !u!212 &1128232910 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5824298929761322370, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
+  m_PrefabInstance: {fileID: 481021466993011483}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1136936621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10067,6 +10105,12 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 481021467160599391, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 115155549}
+    - targetCorrespondingSourceObject: {fileID: 481021467160599391, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 115155544}
     - targetCorrespondingSourceObject: {fileID: 8848714606009338136, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1128232908}
