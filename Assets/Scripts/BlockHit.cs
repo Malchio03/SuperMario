@@ -6,9 +6,11 @@ public class BlockHit : MonoBehaviour
     public Sprite emptyBlock;
     public int maxHits = -1;
 
-    private void OnCollisionEnter2D(Collision collision)
+    private bool animating;
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (!animating && maxHits != 0 && collision.gameObject.CompareTag("Player"))
         {
             if (collision.transform.DotTest(transform, Vector2.up))
             {
@@ -20,18 +22,47 @@ public class BlockHit : MonoBehaviour
     private void Hit()
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        // serve per i blocchi invisibili
+        spriteRenderer.enabled = true;
 
-        --maxHits;
+        maxHits--;
 
         if (maxHits == 0)
         {
             spriteRenderer.sprite = emptyBlock;
         }
+
         StartCoroutine(Animate());
     }
 
     private IEnumerator Animate()
     {
-        // to do
+        animating = true;
+
+        Vector3 restingPosition = transform.localPosition;
+        Vector3 animatedPosition = restingPosition + Vector3.up * 0.5f;
+
+        yield return Move(restingPosition, animatedPosition);
+        yield return Move(animatedPosition, restingPosition);
+
+        animating = false;
+    }
+
+    private IEnumerator Move(Vector3 from, Vector3 to)
+    {
+        float elapsed = 0f;
+        float duration = 0.125f;
+
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+
+            transform.localPosition = Vector3.Lerp(from, to, t);
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        transform.localPosition = to;
     }
 }
