@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BlockHit : MonoBehaviour
 {
+    public GameObject item;
     public Sprite emptyBlock;
     public int maxHits = -1;
 
@@ -22,6 +23,7 @@ public class BlockHit : MonoBehaviour
     private void Hit()
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
         // serve per i blocchi invisibili
         spriteRenderer.enabled = true;
 
@@ -30,6 +32,11 @@ public class BlockHit : MonoBehaviour
         if (maxHits == 0)
         {
             spriteRenderer.sprite = emptyBlock;
+        }
+
+        if (item != null)
+        {
+            Instantiate(item, transform.position, Quaternion.identity);
         }
 
         StartCoroutine(Animate());
