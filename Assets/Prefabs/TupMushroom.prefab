@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7753259790625490206}
   - component: {fileID: 3718461955401329567}
   - component: {fileID: 6476137748039714664}
+  - component: {fileID: 612306286755471560}
+  - component: {fileID: 2033036870646189450}
   m_Layer: 6
   m_Name: TupMushroom
   m_TagString: Untagged
@@ -194,3 +196,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &612306286755471560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858123305295726798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75167f63477654fdf84a1c358f52e30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2033036870646189450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858123305295726798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a5a20ab47dd40d6a3d0ce6d8a64b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  direction: {x: 1, y: 0}
