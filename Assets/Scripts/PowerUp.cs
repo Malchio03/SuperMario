@@ -25,16 +25,16 @@ public class PowerUp : MonoBehaviour
         switch (type)
         {
             case Type.Coin:
-                // Tdo
+                GameManager.Instance.AddCoin();
                 break;
             case Type.ExtraLife:
-                // Tdo
+                GameManager.Instance.AddLife();
                 break;
             case Type.MagicMushroom:
-                // Tdo
+                player.GetComponent<Player>().Grow();
                 break;
             case Type.Starpower:
-                // Tdo
+                player.GetComponent<Player>().Starpower();
                 break;
         }
 
