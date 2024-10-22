@@ -25,6 +25,7 @@ public class Pipe : MonoBehaviour
         Vector3 enteredScale = Vector3.one * 0.5f;
 
         yield return Move(player, enteredPosition, enteredScale);
+        yield return new WaitForSeconds(1f);
     }
 
     private IEnumerator Move(Transform player, Vector3 endPosition, Vector3 endScale)
