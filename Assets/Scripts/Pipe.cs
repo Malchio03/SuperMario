@@ -27,7 +27,7 @@ public class Pipe : MonoBehaviour
         yield return Move(player, enteredPosition, enteredScale);
     }
 
-    private IEnumerator Move(Transform player, Vector3 endposition, Vector3 endscale)
+    private IEnumerator Move(Transform player, Vector3 endPosition, Vector3 endScale)
     {
         float elapsed = 0f;
         float duration = 1f;
@@ -39,13 +39,13 @@ public class Pipe : MonoBehaviour
         {
             float t = elapsed / duration;
 
-            player.position = Vector3.Lerp(startPosition, endposition, t);
+            player.position = Vector3.Lerp(startPosition, endPosition, t);
             player.localScale = Vector3.Lerp(startScale, endScale, t);
             elapsed += Time.deltaTime;
 
             yield return null; 
         }
-        player.position = endposition;
-        player.localScale = endscale;
+        player.position = endPosition;
+        player.localScale = endScale;
     }
 }
