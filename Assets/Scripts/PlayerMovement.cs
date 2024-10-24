@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private new Camera camera;
     // metto new perche esiste gia rigidbody e potrebbe causare problemi
     private new Rigidbody2D rigidbody;
+    private Collider2D capsuleCollider;
 
     // Vettore per tenere traccia della velocità del giocatore
     private Vector2 velocity;
@@ -39,8 +40,18 @@ public class PlayerMovement : MonoBehaviour
 
         // Ottiene la camera principale
         camera = Camera.main;
+
+        capsuleCollider = GetComponent<Collider2D>();
     }
-    
+
+    private void OnEnable()
+    {
+        rigidbody.isKinematic = false;
+        capsuleCollider.enabled = true;
+        velocity = Vector2.zero;
+        jumping = false;
+    }
+
     // Metodo chiamato una volta per frame
     private void Update() {
         // Gestisce il movimento orizzontale del giocatore

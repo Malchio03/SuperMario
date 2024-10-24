@@ -14,9 +14,9 @@ public class FlagPole : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             StartCoroutine(MoveTo(flag, poleBottom.position));
-
+            StartCoroutine(LevelCompleteSequence(player));
         }
-        
+
     }
 
     private IEnumerator LevelCompleteSequence(Transform player)
