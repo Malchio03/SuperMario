@@ -4,6 +4,8 @@ public class Goomba : MonoBehaviour
 {
     public Sprite flatSprite;
 
+    public int points = 100; // Punti da assegnare per sconfiggere Goomba
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -32,6 +34,9 @@ public class Goomba : MonoBehaviour
     }
     private void Flatten()
     {
+
+        AddPoints();
+
         GetComponent<Collider2D>().enabled = false;
         GetComponent<EntityMovement>().enabled = false;
         GetComponent<AnimationsSprites>().enabled = false;
@@ -45,4 +50,16 @@ public class Goomba : MonoBehaviour
         GetComponent<DeathAnimation>().enabled = true;
         Destroy(gameObject, 3f);
     }
+
+    // Funzione per aggiungere punti al punteggio
+    private void AddPoints()
+    {
+        // Trova lo ScoreManager nella scena e aggiungi i punti
+        ScoreManagerTMP scoreManager = FindObjectOfType<ScoreManagerTMP>();
+        if (scoreManager != null)
+        {
+            scoreManager.AddScore(points); // Aggiungi i punti specificati
+        }
+    }
+
 }

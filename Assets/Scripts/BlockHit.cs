@@ -7,6 +7,9 @@ public class BlockHit : MonoBehaviour
     public Sprite emptyBlock;
     public int maxHits = -1;
 
+    // Il numero di punti che questo oggetto darà al giocatore
+    public int points = 200;
+
     private bool animating;
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -24,23 +27,33 @@ public class BlockHit : MonoBehaviour
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // serve per i blocchi invisibili
+        // Serve per i blocchi invisibili
         spriteRenderer.enabled = true;
 
         maxHits--;
 
+        // Se il blocco è vuoto (maxHits è 0), cambiamo lo sprite
         if (maxHits == 0)
         {
             spriteRenderer.sprite = emptyBlock;
         }
 
-        if (item != null)
+        // Aggiungi punti solo se il blocco non è vuoto
+        if (maxHits >= 0 && item != null)
         {
+            // Trova lo ScoreManager nella scena e aggiungi punti
+            ScoreManagerTMP scoreManager = FindObjectOfType<ScoreManagerTMP>();
+            if (scoreManager != null)
+            {
+                scoreManager.AddScore(points); // Aggiungi i punti solo se il blocco non è vuoto
+            }
+
             Instantiate(item, transform.position, Quaternion.identity);
         }
 
         StartCoroutine(Animate());
     }
+
 
     private IEnumerator Animate()
     {

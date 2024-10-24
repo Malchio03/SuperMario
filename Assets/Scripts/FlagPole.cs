@@ -9,11 +9,18 @@ public class FlagPole : MonoBehaviour
     public float speed = 6f;
     public int nextWorld = 1;
     public int nextStage = 1;
+    public int points = 1000;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && other.TryGetComponent(out Player player))
         {
+            ScoreManagerTMP scoreManager = FindObjectOfType<ScoreManagerTMP>();
+            if (scoreManager != null)
+            {
+                scoreManager.AddScore(points); // Aggiungi punti
+            }
+
             StartCoroutine(MoveTo(flag, poleBottom.position));
             StartCoroutine(LevelCompleteSequence(player));
         }

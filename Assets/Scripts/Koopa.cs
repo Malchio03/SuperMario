@@ -7,6 +7,8 @@ public class Koopa : MonoBehaviour
 
     private bool shelled;
     private bool pushed;
+    public int points = 150; // Punti che rilascia Koopa quando muore
+    public int pointsOnShell = 100; 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -56,6 +58,8 @@ public class Koopa : MonoBehaviour
 
     private void EnterShell()
     {
+        AddPoints(pointsOnShell);
+
         shelled = true;
 
         GetComponent<EntityMovement>().enabled = false;
@@ -79,17 +83,33 @@ public class Koopa : MonoBehaviour
 
     private void Hit()
     {
+        // Aggiungi i punti quando il Koopa viene sconfitto
+        AddPoints(points);
+
+
         GetComponent<AnimationsSprites>().enabled = false;
         GetComponent<DeathAnimation>().enabled = true;
         Destroy(gameObject, 3f);
     }
 
-   /* private void OnBecameInvisible()
+    // Funzione per aggiungere i punti
+    private void AddPoints(int pointsToAdd)
     {
-        if (pushed)
+        // Trova lo ScoreManager nella scena
+        ScoreManagerTMP scoreManager = FindObjectOfType<ScoreManagerTMP>();
+        if (scoreManager != null)
         {
-            Destroy(gameObject);
+            scoreManager.AddScore(points); // Aggiungi 150 punti
         }
     }
-   */
+
+
+    /* private void OnBecameInvisible()
+     {
+         if (pushed)
+         {
+             Destroy(gameObject);
+         }
+     }
+    */
 }
