@@ -2316,6 +2316,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a59700ceb926ca24fbc26b469f3dcda5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  height: 6.5
+  undergroundHeight: -9.5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -10007,6 +10009,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1078669067}
     m_Modifications:
+    - target: {fileID: 3387012777665572100, guid: 65b70367d97a6a041b6b5110249c2668, type: 3}
+      propertyPath: connection
+      value: 
+      objectReference: {fileID: 1374034425}
     - target: {fileID: 5674727796144505232, guid: 65b70367d97a6a041b6b5110249c2668, type: 3}
       propertyPath: connection
       value: 
@@ -10905,6 +10911,10 @@ PrefabInstance:
       propertyPath: connection
       value: 
       objectReference: {fileID: 1655158057}
+    - target: {fileID: 6933002395893591953, guid: ed187b71a97bea840801d7d397bb47b7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
