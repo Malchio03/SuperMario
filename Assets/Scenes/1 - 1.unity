@@ -2328,6 +2328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   height: 6.5
   undergroundHeight: -9.5
+  undergroundThreshold: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -8351,7 +8352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flag: {fileID: 1512377383}
   poleBottom: {fileID: 355488950}
-  castle: {fileID: 0}
+  castle: {fileID: 1768761168}
   speed: 6
   nextWorld: 1
   nextStage: 1

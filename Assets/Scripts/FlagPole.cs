@@ -21,7 +21,7 @@ public class FlagPole : MonoBehaviour
 
     private IEnumerator LevelCompleteSequence(Player player)
     {
-        // player.movement.enabled = false;
+         player.movement.enabled = false;
 
         yield return MoveTo(player.transform, poleBottom.position);
         yield return MoveTo(player.transform, player.transform.position + Vector3.right);
@@ -31,6 +31,9 @@ public class FlagPole : MonoBehaviour
         player.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(2f);
+
+        // carica altro livello (TODO)
+        GameManager.Instance.LoadLevel(nextWorld, nextStage);
 
     }
 
