@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class FlagPole : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Transform flag;
+    public Transform poleBottom;
+    public Transform castle;
+    public float speed = 6f;
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Player"))
+        {
+            StartCoroutine(MoveTo(flag, poleBottom.position));
+
+        }
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator LevelCompleteSequence(Transform player)
     {
-        
+
+    }
+
+    private IEnumerator MoveTo(Transform subject, Vector3 to)
+    {
+
     }
 }
