@@ -8,40 +8,42 @@ public class Pipe : MonoBehaviour
     public Vector3 enterDirection = Vector3.down;
     public Vector3 exitDirection = Vector3.zero;
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (connection != null && other.CompareTag("Player"))
         {
-            if(Input.GetKeyDown(enterKeyCode))
+            if (Input.GetKey(enterKeyCode) && other.TryGetComponent(out Player player))
             {
-                StartCoroutine(Enter(other.transform));
+                StartCoroutine(Enter(player));
             }
         }
     }
-    private IEnumerator Enter(Transform player)
+
+    private IEnumerator Enter(Player player)
     {
-        player.GetComponent<PlayerMovement>().enabled = false;
+        player.movement.enabled = false;
+
         Vector3 enteredPosition = transform.position + enterDirection;
         Vector3 enteredScale = Vector3.one * 0.5f;
 
-        yield return Move(player, enteredPosition, enteredScale);
+        yield return Move(player.transform, enteredPosition, enteredScale);
         yield return new WaitForSeconds(1f);
 
-        bool underground = connection.position.y < 0f;
-        Camera.main.GetComponent<SideScrolling>().SetUnderground(underground);
+        var sideSrolling = Camera.main.GetComponent<SideScrolling>();
+        sideSrolling.SetUnderground(connection.position.y < sideSrolling.undergroundThreshold);
 
         if (exitDirection != Vector3.zero)
         {
-            player.position = connection.position - exitDirection;
-            yield return Move(player, connection.position + exitDirection, Vector3.one);
-        } else
+            player.transform.position = connection.position - exitDirection;
+            yield return Move(player.transform, connection.position + exitDirection, Vector3.one);
+        }
+        else
         {
-            player.position = connection.position;
-            player.localScale = Vector3.one;
+            player.transform.position = connection.position;
+            player.transform.localScale = Vector3.one;
         }
 
-        player.GetComponent<PlayerMovement>().enabled = true;
-
+        player.movement.enabled = true;
     }
 
     private IEnumerator Move(Transform player, Vector3 endPosition, Vector3 endScale)
@@ -60,9 +62,11 @@ public class Pipe : MonoBehaviour
             player.localScale = Vector3.Lerp(startScale, endScale, t);
             elapsed += Time.deltaTime;
 
-            yield return null; 
+            yield return null;
         }
+
         player.position = endPosition;
         player.localScale = endScale;
     }
+
 }

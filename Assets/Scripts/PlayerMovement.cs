@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private new Rigidbody2D rigidbody;
     private Collider2D capsuleCollider;
 
+
     // Vettore per tenere traccia della velocità del giocatore
     private Vector2 velocity;
 
@@ -32,6 +33,9 @@ public class PlayerMovement : MonoBehaviour
     public bool running => Mathf.Abs(velocity.x) > 0.25f || Mathf.Abs(inputAxis) > 0.25f;
     public bool sliding => (inputAxis > 0f && velocity.x < 0f) || (inputAxis < 0f && velocity.x > 0f);
 
+    //aggiunto ora
+    public bool falling => velocity.y < 0f && !grounded;
+
 
     // Metodo chiamato all'inizializzazione dello script
     private void Awake() {
@@ -41,13 +45,21 @@ public class PlayerMovement : MonoBehaviour
         // Ottiene la camera principale
         camera = Camera.main;
 
-        capsuleCollider = GetComponent<Collider2D>();
+        capsuleCollider = GetComponent<Collider2D>(); //aggiunto ora
     }
 
-    private void OnEnable()
+    private void OnEnable() // aggiunto ora
     {
         rigidbody.isKinematic = false;
         capsuleCollider.enabled = true;
+        velocity = Vector2.zero;
+        jumping = false;
+    }
+
+    private void OnDisable()    // aggiunt ora
+    {
+        rigidbody.isKinematic = true;
+        capsuleCollider.enabled = false;
         velocity = Vector2.zero;
         jumping = false;
     }
@@ -120,7 +132,8 @@ public class PlayerMovement : MonoBehaviour
         Vector2 rightEdge = camera.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
 
         // Limita la posizione del giocatore ai bordi della telecamera
-        position.x = Mathf.Clamp(position.x, leftEdge.x, rightEdge.x);
+        position.x = Mathf.Clamp(position.x, leftEdge.x + 0.5f, rightEdge.x - 0.5f);
+        //position.x = Mathf.Clamp(position.x, leftEdge.x, rightEdge.x);
 
         // Muove il Rigidbody2D alla nuova posizione calcolata
         rigidbody.MovePosition(position);

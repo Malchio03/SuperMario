@@ -3,15 +3,31 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    /* vecchio file 
+     * public PlayerRender smallRenderer;
+    public PlayerRender bigRenderer;
+    public PlayerMovement movement;
+    private PlayerRender activeRenderer;
+
+    private DeathAnimation deathAnimation;
+    //private CapsuleCollider2D capsuleCollider;
+    public CapsuleCollider2D capsuleCollider { get; private set; }
+
+    public bool big => bigRenderer.enabled;
+    public bool small => smallRenderer.enabled;
+    public bool dead => deathAnimation.enabled;
+    public bool starpower { get; private set; }
+    */
+
+    public CapsuleCollider2D capsuleCollider { get; private set; }
+    public PlayerMovement movement { get; private set; }
+    public DeathAnimation deathAnimation { get; private set; }
+
     public PlayerRender smallRenderer;
     public PlayerRender bigRenderer;
     private PlayerRender activeRenderer;
 
-    private DeathAnimation deathAnimation;
-    private CapsuleCollider2D capsuleCollider;
-
     public bool big => bigRenderer.enabled;
-    public bool small => smallRenderer.enabled;
     public bool dead => deathAnimation.enabled;
     public bool starpower { get; private set; }
 
@@ -20,6 +36,7 @@ public class Player : MonoBehaviour
         deathAnimation = GetComponent<DeathAnimation>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         activeRenderer = smallRenderer;
+        movement = GetComponent<PlayerMovement>(); // nuivo
     }
 
     public void Hit()
