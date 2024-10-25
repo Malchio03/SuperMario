@@ -4,29 +4,27 @@ using TMPro;
 
 public class SimpleTimer : MonoBehaviour
 {
-
     public float targetTime = 60.0f;
     public TextMeshProUGUI timeText;
-    //public int nextWorld = 1;
-    //public int nextStage = 1;
+
+    // Flag to check if the flagpole has been reached
+    public bool isFlagReached = false;
 
     public void Update()
     {
-        if (targetTime > 0.01f)
+        if (targetTime > 0.01f && !isFlagReached)
         {
             targetTime -= Time.deltaTime;
-            timeText.text = $"{targetTime}";
-        }else 
+            timeText.text = $"{targetTime:F2}";  // Format to two decimal places
+        }
+        else if (!isFlagReached)
         {
             timerEnded();
         }
-
     }
 
     void timerEnded()
     {
-        GameManager.Instance.ResetLevel(0f);    // TODO schermata gameover
+        GameManager.Instance.ResetLevel(0f);    // Trigger level reset only if flag is not reached
     }
-
-
 }
