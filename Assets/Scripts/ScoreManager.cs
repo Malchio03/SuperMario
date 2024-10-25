@@ -11,7 +11,7 @@ public class ScoreManagerTMP : MonoBehaviour
         score += points;
 
         // scoreText.text = $"MARIO\n{score}";
-        //scoreText.text = "Score: " + score.ToString();
-        scoreText.text = $"    Score: {score}";
+        scoreText.text = "Score: " + score.ToString();
+       // scoreText.text = $"    Score: {score}";
     }
 }

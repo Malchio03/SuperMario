@@ -29,7 +29,7 @@ public class PowerUp : MonoBehaviour
         ScoreManagerTMP scoreManager = FindObjectOfType<ScoreManagerTMP>();
         if (scoreManager != null)
         {
-            scoreManager.AddScore(points); // Aggiungi i punti specificati
+            scoreManager.AddScore(points); 
         }
     }
 
