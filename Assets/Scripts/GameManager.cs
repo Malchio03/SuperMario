@@ -24,13 +24,13 @@ public class GameManager : MonoBehaviour
     }
   }
 
-  private void Start() {
+  public void Start() {
     Application.targetFrameRate = 60;
 
     NewGame();
   }
 
-  private void NewGame() {
+  public void NewGame() {
     lives = 3;
     coins = 0;
 
