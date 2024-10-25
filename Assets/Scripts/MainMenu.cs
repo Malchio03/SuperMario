@@ -26,4 +26,47 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
         #endif
     }
+
+    // TODO = sistemare il menu aggiungendo tasti come nella GMBJ12
+
+    /*
+
+
+    using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class SettingStart : SettingsElements
+{
+    [SerializeField] int sceneToLoad;
+    [SerializeField] GameObject textToActive;
+    [SerializeField] GameObject objToActive;
+
+    public override void OnSelect(bool value)
+    {
+        if (value)
+        {
+            //textValue.material = selected;
+            textToActive.SetActive(true);
+        }
+        else textToActive.SetActive(false);
+        //textValue.material = notSelected;
+    }
+
+
+    public override void OnClick() 
+    {
+        objToActive.SetActive(true);
+        
+    }
+    public void changeScene() 
+    {
+        AudioManager.instance.StopMusic();
+        SceneManager.LoadScene(sceneToLoad);
+    }
+}
+
+
+     */
 }
