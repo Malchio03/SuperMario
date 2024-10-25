@@ -5,14 +5,14 @@ using TMPro;
 public class SimpleTimer : MonoBehaviour
 {
 
-    public float targetTime = 10.0f;
+    public float targetTime = 60.0f;
     public TextMeshProUGUI timeText;
     //public int nextWorld = 1;
     //public int nextStage = 1;
 
     public void Update()
     {
-        if (targetTime > 0.0f)
+        if (targetTime > 0.01f)
         {
             targetTime -= Time.deltaTime;
             timeText.text = $"{targetTime}";
@@ -25,7 +25,7 @@ public class SimpleTimer : MonoBehaviour
 
     void timerEnded()
     {
-        GameManager.Instance.ResetLevel(1f);    // TODO schermata gameover
+        GameManager.Instance.ResetLevel(0f);    // TODO schermata gameover
     }
 
 
