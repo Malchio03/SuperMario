@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public int points = 100;    //aggiunt
+    public int points = 100;
 
     public enum Type
     {
