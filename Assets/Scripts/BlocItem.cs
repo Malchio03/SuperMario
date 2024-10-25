@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class BlocItem : MonoBehaviour
 {
+    // punti oggetto
+    //public int points = 100;
+
     void Start()
     {
         StartCoroutine(Animate());
@@ -19,6 +22,8 @@ public class BlocItem : MonoBehaviour
         physicsCollider.enabled = false;
         triggerCollider.enabled = false;
         spriteRenderer.enabled = false;
+
+
 
         yield return new WaitForSeconds(0.25f);
 
@@ -45,5 +50,20 @@ public class BlocItem : MonoBehaviour
         rigidbody.isKinematic = false;
         physicsCollider.enabled = true;
         triggerCollider.enabled = true;
+
+        // AGGIUNTO ORA 
+       // AddPoints();
     }
+
+    // aggiunto ora
+    /*private void AddPoints()
+    {
+        // Trova lo ScoreManager nella scena e aggiungi i punti
+        ScoreManagerTMP scoreManager = FindObjectOfType<ScoreManagerTMP>();
+        if (scoreManager != null)
+        {
+            scoreManager.AddScore(points); // Aggiungi i punti specificati
+        }
+    }
+    */
 }
